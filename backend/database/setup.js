@@ -1,7 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
-require('dotenv').config();
+
+const rootPath = path.resolve(__dirname, '..');
+const envPath = path.join(rootPath, '.env');
+const sampleEnvPath = path.join(rootPath, '.env.example');
+
+if (!fs.existsSync(envPath) && fs.existsSync(sampleEnvPath)) {
+  fs.copyFileSync(sampleEnvPath, envPath);
+  console.log('⚠️  Missing .env file detected. Created backend/.env from backend/.env.example.');
+  console.log('✍️  Edit backend/.env and set DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, then rerun npm run setup-db.');
+  process.exit(1);
+}
+
+require('dotenv').config({ path: envPath });
 
 const connectionConfig = {
   user: process.env.DB_USER || 'postgres',
