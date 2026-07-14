@@ -20,6 +20,19 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// API routes
+const productsRouter = require('./routes/products');
+const categoriesRouter = require('./routes/categories');
+const locationsRouter = require('./routes/locations');
+const quotesRouter = require('./routes/quotes');
+const contactsRouter = require('./routes/contacts');
+
+app.use('/api/products', productsRouter);
+app.use('/api/categories', categoriesRouter);
+app.use('/api/locations', locationsRouter);
+app.use('/api/quotes', quotesRouter);
+app.use('/api/contacts', contactsRouter);
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err);
