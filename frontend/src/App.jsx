@@ -101,37 +101,53 @@ function App() {
   }, [searchTerm, selectedCategory])
 
   return (
-    <div className="app-shell">
+    <>
       <header className="topbar">
         <div className="topbar-inner">
-          <div className="logo">RawMaterials<span className="logo-dot">.</span></div>
-          <div className="search-wrap">
-            <input
-              className="search-input"
-              placeholder="Search by name, SKU or category..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className="search-btn">Search</button>
+          <div className="brand">
+            <div className="logo">RawMaterials<span className="logo-dot">.</span></div>
           </div>
-          <nav className="actions">
+
+          <nav className="main-nav">
+            <div className="product-menu">
+              <button className="product-menu-toggle">Products</button>
+              <div className="product-menu-popup">
+                <div className="product-menu-grid">
+                  <div className="product-menu-column">
+                    <span className="menu-heading">Products</span>
+                    <button className="cat">Cement & Concrete</button>
+                    <button className="cat">Aggregates</button>
+                    <button className="cat">Steel & Metal</button>
+                  </div>
+                  <div className="product-menu-column">
+                    <span className="menu-heading">Materials</span>
+                    <button className="cat">Lumber</button>
+                    <button className="cat">Roofing</button>
+                    <button className="cat">Bricks & Blocks</button>
+                  </div>
+                  <div className="product-menu-column">
+                    <span className="menu-heading">Services</span>
+                    <button className="cat">Bulk delivery</button>
+                    <button className="cat">Jobsite logistics</button>
+                    <button className="cat">Custom quotes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a className="nav-link" href="#services">Services</a>
+            <a className="nav-link" href="#resources">Resources</a>
+            <a className="nav-link" href="#about">About</a>
+          </nav>
+
+          <div className="actions">
             <a className="action-link" href="#locations">Find a branch</a>
             <a className="action-quote" href="#contact">Get a Quote</a>
             <a className="action-account" href="#">Sign In</a>
-          </nav>
-        </div>
-        <div className="category-nav">
-          <div className="category-list">
-            <button className="cat">All</button>
-            <button className="cat">Cement</button>
-            <button className="cat">Aggregates</button>
-            <button className="cat">Steel</button>
-            <button className="cat">Lumber</button>
-            <button className="cat">Roofing</button>
           </div>
         </div>
       </header>
-      <header className="hero-section">
+      <div className="app-shell">
+        <header className="hero-section">
         <div className="hero-banner">
           <div className="hero-banner-inner">
             <div className="hero-text-block">
@@ -266,6 +282,7 @@ function App() {
         </div>
       </section>
     </div>
+    </>
   )
 }
 
